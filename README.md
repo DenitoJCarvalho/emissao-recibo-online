@@ -23,8 +23,8 @@
   - Histórico do usuário (listar recibos)
   
   Não funcionais
-  - API Restfull com documentação (Swagger)
-  - Validação e sanitização de entradas (Zod)
+  - API Restfull com documentação (`Swagger`)
+  - Validação e sanitização de entradas (`Zod`)
   - Auditoria básica em LogSistema
   - Escalabilidade horizontal do backend
 
