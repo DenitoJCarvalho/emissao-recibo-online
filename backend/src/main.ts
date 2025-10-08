@@ -4,12 +4,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { normalizePort } from './common/server/server';
 import helmet from 'helmet';
 import slowDown from 'express-slow-down';
-import dotenv from 'dotenv';
 import tooBusy from 'toobusy-js';
 
-dotenv.config({
-  path: `.env`
-});
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
