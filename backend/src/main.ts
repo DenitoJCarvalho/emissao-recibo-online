@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
 import { normalizePort } from './common/server/server';
 import helmet from 'helmet';
 import slowDown from 'express-slow-down';
@@ -69,7 +70,11 @@ async function bootstrap() {
     SwaggerModule.setup('api', app, document);
   }
   
-  await app.listen(port);
+  await app.listen(port, () => { 
+    console.log(`Servidor rododando em http://localhost:${port}`);
+    console.log(`Ambiente: ${process.env.MODE}`);
+    console.log(`Banco de dodos conectado na URI: ${app.get(ConfigService).get<string>('database.uri')}`);
+  });
 
   process.on('SIGINT', () => { 
     tooBusy.shutdown();;
