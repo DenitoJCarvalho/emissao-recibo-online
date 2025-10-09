@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 
 import { AppService } from './app.service';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { AppService } from './app.service';
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('database.uri')
       })
-    })
+    }),
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

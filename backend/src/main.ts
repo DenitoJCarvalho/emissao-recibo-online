@@ -73,7 +73,6 @@ async function bootstrap() {
   await app.listen(port, () => { 
     console.log(`Servidor rododando em http://localhost:${port}`);
     console.log(`Ambiente: ${process.env.MODE}`);
-    console.log(`Banco de dodos conectado na URI: ${app.get(ConfigService).get<string>('database.uri')}`);
   });
 
   process.on('SIGINT', () => { 
