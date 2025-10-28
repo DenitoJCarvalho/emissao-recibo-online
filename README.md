@@ -66,6 +66,7 @@ flowchart LR
     ├── app.module.ts
     ├── common/
     │   ├── filters/
+    │   ├── repositories/
     │   ├── interceptors/
     │   ├── guards/
     │   ├── pipes/
@@ -114,7 +115,7 @@ Respositories encapsulam queries ao MongoDB.
 
 
 `Usuarios`: 
-  _id nomeCompleto, senha, email, status, prefilId, createdAt, updatedAt
+  _id, nomeCompleto, senha, email, status, perfilId, createdAt, updatedAt
 
 `Perfis`: _id, descrição
 

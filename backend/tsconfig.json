@@ -14,12 +14,21 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@common/repositories": ["src/common/repositories/index"],
+      "@common/server": ["src/common/server/index"],
+      "@common/utils": ["src/common/utils/index"],
+      "@common/interfaces": ["src/common/interfaces/index"],
+      "@common/enums": ["src/common/enums/index"],
+      "@module/*": ["src/modules/*"],
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "strict": true
   }
 }

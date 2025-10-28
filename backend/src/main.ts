@@ -1,12 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ConfigService } from '@nestjs/config';
-import { normalizePort } from './common/server/server';
 import helmet from 'helmet';
 import slowDown from 'express-slow-down';
 import tooBusy from 'toobusy-js';
 
+import { normalizePort } from '@common/server';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
