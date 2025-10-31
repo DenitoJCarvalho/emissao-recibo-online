@@ -1,4 +1,4 @@
-import configuration from './config/configuration';
+import configuration from './config/configuration.config';
 
 import { Module } from '@nestjs/common';
 import { ThrottlerModule } from '@nestjs/throttler';
@@ -12,12 +12,12 @@ import { AppService } from './app.service';
 import { UsersModule } from '@module/users/users.module';
 import { PerfisModule } from '@module/perfis';
 import { TiposImoveisModule } from '@module/tipos-imoveis';
-import { TiposPagamentosModule } from './modules/tipos-pagamentos/tipos-pagamentos.module';
-import { LogSistemaModule } from './modules/log-sistema/log-sistema.module';
-import { ReciboSimplesModule } from './modules/recibo-simples/recibo-simples.module';
-import { ReciboAluguelModule } from './modules/recibo-aluguel/recibo-aluguel.module';
-import { ReciboPrestacaoServicoModule } from './modules/recibo-prestacao-servico/recibo-prestacao-servico.module';
-import { AuthModule } from './modules/auth/auth.module';
+import { TiposPagamentosModule } from '@module/tipos-pagamentos/tipos-pagamentos.module';
+import { LogSistemaModule } from '@module/log-sistema/log-sistema.module';
+import { ReciboSimplesModule } from '@module/recibo-simples/recibo-simples.module';
+import { ReciboAluguelModule } from '@module/recibo-aluguel/recibo-aluguel.module';
+import { ReciboPrestacaoServicoModule } from '@module/recibo-prestacao-servico/recibo-prestacao-servico.module';
+import { AuthModule } from '@module/auth/auth.module';
 
 @Module({
   imports: [

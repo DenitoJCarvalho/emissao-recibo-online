@@ -21,6 +21,7 @@
       "@common/interfaces": ["src/common/interfaces/index"],
       "@common/enums": ["src/common/enums/index"],
       "@module/*": ["src/modules/*"],
+      "@config/*": ["src/config/index"]
     },
     "incremental": true,
     "skipLibCheck": true,
