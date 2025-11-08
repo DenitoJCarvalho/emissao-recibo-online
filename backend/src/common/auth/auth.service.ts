@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
 
-import { PayloadDto } from '@module/auth'
+import { PayloadDto } from '@common/auth'
 
 @Injectable()
 export class AuthService {

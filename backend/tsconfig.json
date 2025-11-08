@@ -20,6 +20,7 @@
       "@common/utils": ["src/common/utils/index"],
       "@common/interfaces": ["src/common/interfaces/index"],
       "@common/enums": ["src/common/enums/index"],
+      "@common/auth":["src/common/auth/index"],
       "@module/*": ["src/modules/*"],
       "@config/*": ["src/config/index"]
     },

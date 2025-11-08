@@ -17,7 +17,8 @@ import { LogSistemaModule } from '@module/log-sistema/log-sistema.module';
 import { ReciboSimplesModule } from '@module/recibo-simples/recibo-simples.module';
 import { ReciboAluguelModule } from '@module/recibo-aluguel/recibo-aluguel.module';
 import { ReciboPrestacaoServicoModule } from '@module/recibo-prestacao-servico/recibo-prestacao-servico.module';
-import { AuthModule } from '@module/auth/auth.module';
+import { AuthModule } from '@common/auth';
+import { LoginModule } from './modules/login/login.module';
 
 @Module({
   imports: [
@@ -48,7 +49,8 @@ import { AuthModule } from '@module/auth/auth.module';
     ReciboSimplesModule,
     ReciboAluguelModule,
     ReciboPrestacaoServicoModule,
-    AuthModule
+    AuthModule,
+    LoginModule
   ],
   controllers: [AppController],
   providers: [AppService],
