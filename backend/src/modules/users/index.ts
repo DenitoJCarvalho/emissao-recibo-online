@@ -1,4 +1,6 @@
 export * from './dto/create-user.dto';
+export * from './dto/select-user.dto';
+export * from './dto/update-user.dto';
 export * from './enums/status.enum';
 export * from './schemas/user.schema';
 export * from './users.controller';
