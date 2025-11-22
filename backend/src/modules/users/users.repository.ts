@@ -12,7 +12,7 @@ export class UsersRepository {
 
   /**
    * 
-   * @param data — dados do usuário a ser criado
+   * @param data  dados do usuário a ser criado
    * @returns o usuário criado.
    */
   async create(data: Partial<User>) { 

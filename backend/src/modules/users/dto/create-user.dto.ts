@@ -1,5 +1,17 @@
 import * as zod from 'zod';
 
+import { Status } from '@module/users';
+
+/**
+ * Dto para criação de usuário.
+ * 
+ * @typedef CreateUserDto
+ * @property { string } nomeCompleto  Nome completo do usuário.
+ * @property { string } email  E-mail do usuário.
+ * @property { string } senha  Senha do usuário.
+ * @property { Status } status  Status do usuário.
+ * @property { string } perfilId  Id do perfil do usuário. 
+ */
 export const CreateUser = zod.object({
 
   nomeCompleto: zod
@@ -21,8 +33,8 @@ export const CreateUser = zod.object({
     .email({ message: 'O email fornecido não é válido.' }),
   
   status: zod
-    .string()
-    .default('pendente'),
+    .nativeEnum(Status)
+    .default(Status.PENDENTE),
   
   perfilId: zod
     .string()
