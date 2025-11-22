@@ -10,57 +10,87 @@ export class UsersRepository {
     @InjectModel(User.name) private readonly userModel: Model<User>,
   ) { }
 
+  //#region Persistir um usuário
   /**
+   * Persiste um usuário no banco.
    * 
-   * @param data  dados do usuário a ser criado
-   * @returns o usuário criado.
+   * @internal
    */
   async create(data: Partial<User>) { 
     return new this.userModel(data).save();
   }
 
+  //#endregion
+
+  //#region Listar usuários
   /**
+   * Retorna todos os usuários.
    *  
-   * @returns uma lista de usuários
+   * @internal
    */
-  async find() {
-    return this.userModel.find().exec();
+  async find(page: number, limit: number) {
+    const skip = (page - 1) * limit;
+    
+    const [data, total] = await Promise.all([
+      this.userModel.find().skip(skip).limit(limit).exec(),
+      this.userModel.countDocuments().exec()
+    ]);
+
+    return {
+      data, total, page, lastPage: Math.ceil(total / limit)
+    }
   }
+  //#endregion
   
+  //#region Retornar usuário por Id
   /**
    * 
-   * @param id — id do usuário
-   * @returns o usuário com o id informado
+   * Retorna um usuário através do id informado.
+   * 
+   * @internal
    */
   async findById(id: string) {
     return this.userModel.findById(id).exec();
   }
+
+  //#endregion
   
+  //#region Retornar usuário por e-mail 
+
   /**
+   * Retorna um usuário através do e-mail informado.
    * 
-   * @param email — e-mail do usuário
-   * @returns o usuário através do e-mail informado
+   * @internal
    */
   async findByEmail(email: string) { 
     return this.userModel.findOne({ email }).exec();
   }
 
+  //#endregion
+
+  //#region Atualizar usuário
+
   /**
+   * Atualiza um usuário.
    * 
-   * @param id — id do usuário
-   * @param data — dados a serem atualizados
-   * @returns uma mensagem informando que o usuário foi atualizado
+   * @internal
    */
   async update(id: string, data: Partial<User>) {
     return this.userModel.findByIdAndUpdate(id, data, { new: true }).exec();
   }
   
+  //#endregion
+
+  //#region Deletar usuário
+
   /**
+   * Deleta um usuário.
    * 
-   * @param id — id do usuário
-   * @returns uma mensagem informando que o usuário foi deletado.
+   * @internal
    */
   async delete(id: string) {
     return this.userModel.findByIdAndDelete(id).exec();
-   }
+  }
+  
+  //#endregion
 };
