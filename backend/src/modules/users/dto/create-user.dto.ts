@@ -1,6 +1,6 @@
 import * as zod from 'zod';
 
-import { Status } from '@module/users';
+import { Status } from '@module/users/enums/status.enum';
 
 /**
  * Dto para criação de usuário.
@@ -41,3 +41,4 @@ export const CreateUser = zod.object({
 });
 
 export type CreateUserDto = zod.infer<typeof CreateUser>;
+
