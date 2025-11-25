@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import slowDown from 'express-slow-down';
 import tooBusy from 'toobusy-js';
+import { ZodValidationPipe } from 'nestjs-zod';
 
 import { normalizePort } from '@common/server';
 
@@ -52,7 +53,12 @@ async function bootstrap() {
     } else {
       next();
     }
-   });
+  });
+  
+  //#region Zod Validation Pipe
+  app.useGlobalPipes(
+    new ZodValidationPipe());
+  //#endregion
 
   /**
    * Swagger Configuration
