@@ -1,7 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { CreateUserDto, ResponseUserDto, ResponsePartialDto, UpdateUserDto, UsersRepository } from '@module/users';
 import { Types } from 'mongoose';
+
+import * as argon from 'argon2';
+
+import { CreateUserDto, ResponseUserDto, ResponsePartialDto, UpdateUserDto, UsersRepository } from '@module/users';
 
 @Injectable()
 export class UsersService {
@@ -9,6 +12,20 @@ export class UsersService {
   constructor(
     private readonly usersRepository: UsersRepository
   ) { }
+
+  //#region Criptografar senha
+  /**
+   * Gera um hash seguro para a senha utilizando o algoritmo Argon2id.
+   * 
+   * @param password Senha em texto puro.
+   * @returns Uma string contendo o hash gerado.
+   */
+  private async hashpassword(password: string): Promise<string> {
+    return await argon.hash(password, {
+      type: argon.argon2id
+    });
+  }
+  //#endregion
 
   //#region Criar usuário
   /**
@@ -18,8 +35,12 @@ export class UsersService {
    * @returns Usuário criado.
    */
   async create(user: CreateUserDto) { 
+
+    const hashedPassword =  await this.hashpassword(user.senha);
+
     return this.usersRepository.create({
       ...user,
+      senha: hashedPassword,
       perfilId: new Types.ObjectId(user.perfilId)
     })
   }
